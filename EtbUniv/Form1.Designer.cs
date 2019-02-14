@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvData = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,18 +42,21 @@
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnRechercher = new System.Windows.Forms.Button();
             this.btnGA = new System.Windows.Forms.Button();
-            this.btnCharger = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvData
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 317);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 204);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Location = new System.Drawing.Point(12, 317);
+            this.dgvData.MultiSelect = false;
+            this.dgvData.Name = "dgvData";
+            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvData.Size = new System.Drawing.Size(776, 204);
+            this.dgvData.TabIndex = 0;
             // 
             // label1
             // 
@@ -165,14 +168,15 @@
             this.btnGA.Text = "Gestion d\'absences";
             this.btnGA.UseVisualStyleBackColor = true;
             // 
-            // btnCharger
+            // btnSelect
             // 
-            this.btnCharger.Location = new System.Drawing.Point(660, 527);
-            this.btnCharger.Name = "btnCharger";
-            this.btnCharger.Size = new System.Drawing.Size(128, 37);
-            this.btnCharger.TabIndex = 14;
-            this.btnCharger.Text = "charger des données";
-            this.btnCharger.UseVisualStyleBackColor = true;
+            this.btnSelect.Location = new System.Drawing.Point(660, 527);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(128, 37);
+            this.btnSelect.TabIndex = 14;
+            this.btnSelect.Text = "charger des données";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // label5
             // 
@@ -190,7 +194,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 570);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnCharger);
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnGA);
             this.Controls.Add(this.btnRechercher);
             this.Controls.Add(this.btnSupprimer);
@@ -204,10 +208,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvData);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,7 +220,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -229,7 +234,7 @@
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnRechercher;
         private System.Windows.Forms.Button btnGA;
-        private System.Windows.Forms.Button btnCharger;
+        private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Label label5;
     }
 }
