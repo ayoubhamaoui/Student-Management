@@ -33,7 +33,32 @@ namespace EtbUniv
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
+            //Ajouter nouveau etudiant a la table
+            try
+            {
+                dgvData.DataSource = null;
+                //load all student from table 'eleve'
+                conn.Open();
+                sql = "Select * from st_insert(:_cne,:_nom,:_prenom,:_groupe)";
+                cmd = new NpgsqlCommand(sql, conn);
 
+                cmd.Parameters.AddWithValue("_cne", Int32.Parse(txtID.Text));
+                cmd.Parameters.AddWithValue("_nom", txtNom.Text);
+                cmd.Parameters.AddWithValue("_prenom", txtPrenom.Text);
+                cmd.Parameters.AddWithValue("_groupe", txtGroupe.Text);
+
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    conn.Close();
+                    MessageBox.Show("Nouveau etudiant a etait ajouté.","Tres bien",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    btnSelect.PerformClick();//si insertion passe bien
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "INSERT FAIL !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -59,6 +84,36 @@ namespace EtbUniv
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, " FAIL !!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                conn.Close();
+            }
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            //Ajouter nouveau etudiant a la table
+            try
+            {
+                dgvData.DataSource = null;
+                //load all student from table 'eleve'
+                conn.Open();
+                sql = "Select * from st_update(:_cne,:_nom,:_prenom,:_groupe)";
+                cmd = new NpgsqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("_cne", Int32.Parse(txtID.Text));
+                cmd.Parameters.AddWithValue("_nom", txtNom.Text);
+                cmd.Parameters.AddWithValue("_prenom", txtPrenom.Text);
+                cmd.Parameters.AddWithValue("_groupe", txtGroupe.Text);
+
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    conn.Close();
+                    MessageBox.Show("Mise à jour bien effectuer", "MAJ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnSelect.PerformClick();//si maj passe bien
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "UPDATE FAIL !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conn.Close();
             }
         }
