@@ -32,10 +32,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtAbs = new System.Windows.Forms.TextBox();
+            this.txtH = new System.Windows.Forms.TextBox();
+            this.btnEnregistrer = new System.Windows.Forms.Button();
             this.nSemaine = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -75,35 +75,36 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Total Absences";
             // 
-            // textBox1
+            // txtID
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtID.Location = new System.Drawing.Point(97, 26);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(166, 20);
+            this.txtID.TabIndex = 4;
             // 
-            // textBox2
+            // txtAbs
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(166, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtAbs.Location = new System.Drawing.Point(97, 70);
+            this.txtAbs.Name = "txtAbs";
+            this.txtAbs.Size = new System.Drawing.Size(166, 20);
+            this.txtAbs.TabIndex = 5;
             // 
-            // textBox4
+            // txtH
             // 
-            this.textBox4.Location = new System.Drawing.Point(455, 51);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(78, 20);
-            this.textBox4.TabIndex = 7;
+            this.txtH.Location = new System.Drawing.Point(455, 51);
+            this.txtH.Name = "txtH";
+            this.txtH.Size = new System.Drawing.Size(78, 20);
+            this.txtH.TabIndex = 7;
             // 
-            // button1
+            // btnEnregistrer
             // 
-            this.button1.Location = new System.Drawing.Point(418, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 87);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Enregistrer";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Location = new System.Drawing.Point(418, 125);
+            this.btnEnregistrer.Name = "btnEnregistrer";
+            this.btnEnregistrer.Size = new System.Drawing.Size(115, 87);
+            this.btnEnregistrer.TabIndex = 8;
+            this.btnEnregistrer.Text = "Enregistrer";
+            this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // nSemaine
             // 
@@ -119,10 +120,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 224);
             this.Controls.Add(this.nSemaine);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnEnregistrer);
+            this.Controls.Add(this.txtH);
+            this.Controls.Add(this.txtAbs);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -141,10 +142,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtAbs;
+        private System.Windows.Forms.TextBox txtH;
+        private System.Windows.Forms.Button btnEnregistrer;
         private System.Windows.Forms.ComboBox nSemaine;
     }
 }
