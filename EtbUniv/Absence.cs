@@ -17,6 +17,7 @@ namespace EtbUniv
         private NpgsqlConnection conn;
         //private DataTable dt;
         private NpgsqlCommand cmd;
+        private NpgsqlCommand cmdTest;
         private string sql = null;
 
         string connString = String.Format("Host=ec2-46-137-121-216.eu-west-1.compute.amazonaws.com;Port=5432;Username=nyxhqyqvzpibqg;" +
@@ -43,6 +44,8 @@ namespace EtbUniv
             try
             {
                 conn.Open();
+
+                //cmdTest = new NpgsqlCommand("Select *  from ab_existe(" + txtID + ");"); 
                 sql = "Select * from ab_insert(:_nSemaine,:_cne,:_nbAbsence)";
                 cmd = new NpgsqlCommand(sql, conn);
 
