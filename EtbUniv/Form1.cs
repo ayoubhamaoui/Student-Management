@@ -165,5 +165,12 @@ namespace EtbUniv
                 conn.Close();
             }
         }
+
+        private void btnGA_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            Absence ab = new Absence();
+            ab.ShowDialog();
+        }
     }
 }

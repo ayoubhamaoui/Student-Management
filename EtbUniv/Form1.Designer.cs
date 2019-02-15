@@ -170,6 +170,7 @@
             this.btnGA.TabIndex = 13;
             this.btnGA.Text = "Gestion d\'absences";
             this.btnGA.UseVisualStyleBackColor = true;
+            this.btnGA.Click += new System.EventHandler(this.btnGA_Click);
             // 
             // btnSelect
             // 
