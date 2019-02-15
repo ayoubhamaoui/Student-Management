@@ -37,7 +37,6 @@ namespace EtbUniv
             try
             {
                 dgvData.DataSource = null;
-                //load all student from table 'eleve'
                 conn.Open();
                 sql = "Select * from st_insert(:_cne,:_nom,:_prenom,:_groupe)";
                 cmd = new NpgsqlCommand(sql, conn);
@@ -90,12 +89,12 @@ namespace EtbUniv
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            //Ajouter nouveau etudiant a la table
+            //Ajouter etudiant a la table
             try
             {
                 dgvData.DataSource = null;
-                //load all student from table 'eleve'
                 conn.Open();
+
                 sql = "Select * from st_update(:_cne,:_nom,:_prenom,:_groupe)";
                 cmd = new NpgsqlCommand(sql, conn);
 
@@ -114,6 +113,32 @@ namespace EtbUniv
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "UPDATE FAIL !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
+            }
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            //Suppression d'un eleve
+            try
+            {
+                dgvData.DataSource = null;
+                conn.Open();
+                sql = "Select * from st_delete(:_cne)";
+                cmd = new NpgsqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("_cne", Int32.Parse(txtID.Text));
+
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    conn.Close();
+                    MessageBox.Show("Suppression bien effectuer", "Suppression", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnSelect.PerformClick();//si suppression bien effectuer
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "DELETE FAIL !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conn.Close();
             }
         }
