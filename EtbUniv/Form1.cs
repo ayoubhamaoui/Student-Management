@@ -142,5 +142,28 @@ namespace EtbUniv
                 conn.Close();
             }
         }
+
+        private void btnRechercher_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvData.DataSource = null;
+                //load student
+                conn.Open();
+                sql = "Select * from st_search(:_cne)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("_cne", Int32.Parse(txtID.Text));          
+                dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                dgvData.DataSource = dt;
+                conn.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "SEARCH FAIL !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
+            }
+        }
     }
 }
